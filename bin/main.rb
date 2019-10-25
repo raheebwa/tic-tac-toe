@@ -38,6 +38,13 @@ play_first = play_first === 0 ? player_O : player_x
 puts "\n******************\n\n\n"
 p "Player #{play_first} will play first"
 
+game_status = true
+
+game_won , game_ended, game_drawn = false
+game_drawn = true
+
+while game_status
+    
 # display prompt to move input to player 1
 
 # execute function to display grid with players mark
@@ -46,8 +53,12 @@ p "Player #{play_first} will play first"
 
 # execute function to display grid with players mark
 
-# repeat the above until all cells are marked
+# repeat the above 
 
-# display result
+if game_won || game_ended || game_drawn
+    # display winner & prompt for replay
+    game_status = false
+    
+end
 
-# display prompt asking if they want to play again
+end
