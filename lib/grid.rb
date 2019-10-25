@@ -14,7 +14,7 @@ class Grid
     end
   end
 
-  def translator(pos, mark)
+  def translate(pos, mark)
     case pos
     when 1
       @grid[0][0] = mark
