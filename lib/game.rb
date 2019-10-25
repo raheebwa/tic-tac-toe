@@ -3,6 +3,8 @@
 load 'lib/grid.rb'
 
 class Game
+  attr_accessor :winner
+
   @@current_player = true
 
   def initialize(player_1, player_2, finished = false)
@@ -48,9 +50,38 @@ class Game
 
   def check_win
     if @@played_moves.count > 4
-      if @@played_moves[1] == mark && @@played_moves[2] == mark && @@played_moves[3] == mark
-        true
+      x_count = @@played_moves.select{|x,y| y=="X"}
+      o_count = @@played_moves.select{|a,b| b=="O"}
+
+      if (x_count.count > 2)
+        valid_win(x_count)
+        elsif(o_count.count > 2)        
+        valid_win(o_count)
       end
+    end
+    false
+  end
+
+  def valid_win(hash)
+
+    if (hash[1] == hash[2]) == hash[3]
+      return true
+    elsif (hash[4] == hash[5]) == hash[6]
+      return true
+    elsif (hash[7] == hash[8]) == hash[9]
+      return true
+    elsif (hash[1] == hash[4]) == hash[7]
+      return true
+    elsif (hash[2] == hash[5]) == hash[8]
+      return true
+    elsif (hash[3] == hash[6]) == hash[9]
+      return true
+    elsif (hash[7] == hash[5]) == hash[3]
+      return true
+    elsif (hash[1] == hash[5]) == hash[9]
+      return true
+    else
+      return false
     end
   end
 end
