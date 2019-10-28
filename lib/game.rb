@@ -14,14 +14,12 @@ class Game
     @player_1 = Player.new(player_1)
     @player_2 = Player.new(player_2)
     @finished = finished
-    @@played_moves = Hash.new
+    @@played_moves = {}
     @grid = Grid.new
   end
 
   def display
     @grid.display
-    puts "X #{@@played_moves.select { |x, y| y == 'X' }}"
-    puts "O #{@@played_moves.select { |x, y| y == 'O' }}"
   end
 
   def validate_move(move)
@@ -34,9 +32,9 @@ class Game
     mark = @@current_player ? 'X' : 'O'
     if validate_move(move)
       @grid.translate(move, mark)
-      display
       switch_player
       @@played_moves[move] = mark
+      display
     else
       false
     end
@@ -61,12 +59,12 @@ class Game
     o_count = @@played_moves.select { |_a, b| b == 'O' }
 
     if x_count.count > 2
-      @@finished = true if valid_win(x_count) == true
-      @winner = @player_1 if valid_win(x_count) == true
+      @@finished = true if valid_win(@@played_moves) == true
+      @winner = @player_1 if valid_win(@@played_moves) == true
 
     elsif o_count.count > 2
-      @@finished = true if valid_win(o_count) == true
-      @winner = @player_2 if valid_win(o_count) == true
+      @@finished = true if valid_win(@@played_moves) == true
+      @winner = @player_2 if valid_win(@@played_moves) == true
 
     else
       false
@@ -74,20 +72,24 @@ class Game
   end
 
   def valid_win(hash)
-    if (hash[1] === hash[2]) === hash[3]
+    if hash[1] === hash[2] && hash[2] === hash[3]
       true
-    elsif (hash[4] === hash[5]) === hash[6]
+    elsif hash[4] === hash[5] && hash[5] === hash[6]
       true
-    elsif (hash[7] === hash[8]) === hash[9]
+    elsif hash[7] === hash[8] && hash[8] === hash[9]
       true
-    elsif (hash[1] === hash[4]) === hash[7]
+    elsif hash[1] === hash[4] && hash[4] === hash[7]
       true
-    elsif (hash[2] === hash[5]) === hash[8]
+    elsif hash[2] === hash[5] && hash[5] === hash[8]
       true
-    elsif (hash[3] === hash[6]) === hash[9]
+    elsif hash[3] === hash[6] && hash[6] === hash[9]
+      true
+    elsif hash[1] === hash[5] && hash[5] === hash[9]
+      true
+    elsif hash[3] === hash[5] && hash[5] === hash[7]
       true
     else
-      (hash[7] === hash[5]) === hash[3]
+      false
     end
   end
 
