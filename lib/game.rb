@@ -92,13 +92,6 @@ class Game
 
     true
   end
-
-  def instructions
-    print "- Each player should make one move per turn.\n\n\n"
-    print "- To make a move, input the number of an empty cell that you wish to mark.\n\n\n"
-    print '- The player who succeeds in placing three of their marks in a horizontal,'
-    print " vertical, or diagonal row is the winner \n\n\n"
-  end
 end
 
 # rubocop:enable Metrics/CyclomaticComplexity
