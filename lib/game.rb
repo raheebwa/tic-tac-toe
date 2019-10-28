@@ -53,16 +53,14 @@ class Game
   end
 
   def check_win
-    return false unless @@played_moves.count > 4
-
     x_count = @@played_moves.select { |_x, y| y == 'X' }
     o_count = @@played_moves.select { |_a, b| b == 'O' }
 
-    if x_count.count > 2 && valid_win(x_count) == true
+    if x_count.count > 2 && valid_win(x_count) === true
       @@finished = true
       @winner = @player_1
 
-    elsif o_count.count > 2 && valid_win(o_count) == true 
+    elsif o_count.count > 2 && valid_win(o_count) === true 
       @@finished = true 
       @winner = @player_2
 
