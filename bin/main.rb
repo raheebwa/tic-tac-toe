@@ -29,23 +29,23 @@ game.display
 print "#{player_1} is playing X and #{player_2} is playing O \n\n\n"
 
 puts "\n******************\n\n\n"
-
-while game.status == false
+finished = false
+while finished == false
   print "#{game.curr_player}, it's your turn! Input your choice: "
   prompt_move = gets.chomp.to_i
   game.make_move(prompt_move)
-  if game.check_win
-   game.check_win
-   print "\n\n\n The Winner is #{game.winner.name} game status is #{game.status}"
+  if game.check_win == true
+    print "\n\n\n The Winner is #{game.winner.name}"
+    finished = true
+  elsif game.check_draw == true
+    print "It's a draw!"
+    finished = true
   end
 
 
 end
-    
-# display prompt to move input to player 1
-p "input your move"
-prompt_move = gets.chomp
 
+# display prompt to move input to player 1
 
 # execute function to display grid with players mark
 
@@ -55,9 +55,4 @@ prompt_move = gets.chomp
 
 # repeat the above 
 
-if game_won || game_ended || game_drawn
-    # display winner & prompt for replay
-    game_status = false
-    
-end
 

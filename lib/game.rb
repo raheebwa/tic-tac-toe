@@ -29,19 +29,17 @@ class Game
   end
 
   def make_move(move)
-    mark = @@current_player ? 'X' : 'O'
+    @@mark = @@current_player ? 'X' : 'O'
     if validate_move(move)
-      @grid.translate(move, mark)
+      @grid.translate(move, @@mark)
       switch_player
-      @@played_moves[move] = mark
+      @@played_moves[move] = @@mark
+      check_win
+      check_draw
       display
     else
       false
     end
-  end
-
-  def status
-    @@finished
   end
 
   def curr_player
@@ -57,38 +55,41 @@ class Game
     o_count = @@played_moves.select { |_a, b| b == 'O' }
 
     if x_count.count > 2 && valid_win(x_count) === true
-      @@finished = true
       @winner = @player_1
-
+      return true
     elsif o_count.count > 2 && valid_win(o_count) === true 
-      @@finished = true 
       @winner = @player_2
-
+      return true
     else
       false
     end
   end
 
   def valid_win(hash)
-    if hash[1] === hash[2] && hash[2] === hash[3]
+    if hash[1] == @@mark && hash[2] == @@mark && hash[3] == @@mark
       true
-    elsif hash[4] === hash[5] && hash[5] === hash[6]
+    elsif hash[4] == @@mark && hash[5] == @@mark && hash[6] == @@mark
       true
-    elsif hash[7] === hash[8] && hash[8] === hash[9]
+    elsif hash[7] == @@mark && hash[8] == @@mark && hash[9] == @@mark
       true
-    elsif hash[1] === hash[4] && hash[4] === hash[7]
+    elsif hash[1] == @@mark && hash[4] == @@mark && hash[7] == @@mark
       true
-    elsif hash[2] === hash[5] && hash[5] === hash[8]
+    elsif hash[2] == @@mark && hash[5] == @@mark && hash[8] == @@mark
       true
-    elsif hash[3] === hash[6] && hash[6] === hash[9]
+    elsif hash[3] == @@mark && hash[6] == @@mark && hash[9] == @@mark
       true
-    elsif hash[1] === hash[5] && hash[5] === hash[9]
+    elsif hash[1] == @@mark && hash[5] == @@mark && hash[9] == @@mark
       true
-    elsif hash[3] === hash[5] && hash[5] === hash[7]
+    elsif hash[3] == @@mark && hash[5] == @@mark && hash[7] == @@mark
       true
     else
       false
     end
+  end
+
+  def check_draw
+    return false unless @@played_moves.length == 9 && check_win == false
+    true
   end
 
   def instructions
