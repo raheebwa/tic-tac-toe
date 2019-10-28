@@ -11,6 +11,8 @@ puts "***************"
 
 print "\n\n\n"
 
+
+def game_play
 p "You and your friend should input your names to initialize the game"
 
 print "\n\n\n"
@@ -35,13 +37,28 @@ while finished == false
   prompt_move = gets.chomp.to_i
   game.make_move(prompt_move)
   if game.check_win == true
-    print "\n\n\n The Winner is #{game.winner.name}"
+    puts "\n\n The Winner is #{game.winner.name}"
     finished = true
   elsif game.check_draw == true
     print "It's a draw!"
     finished = true
   end
 
+end
+
+end
+
+
+play_again = true
+
+while play_again
+
+game_play
+
+puts "Do you want to play again? (Enter 'Y' for yes or 'N' for no)"
+reply = gets.chomp
+
+reply.upcase === 'Y' ? play_again= true : play_again = false
 
 end
 
