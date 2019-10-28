@@ -48,7 +48,6 @@ end
 
 end
 
-
 play_again = true
 
 while play_again
