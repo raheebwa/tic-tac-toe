@@ -61,6 +61,10 @@ class Game
     end
   end
 
+  # rubocop:disable Metrics/PerceivedComplexity
+
+  # rubocop:disable Metrics/CyclomaticComplexity
+
   def valid_win(hash)
     if hash[1] == @mark && hash[2] == @mark && hash[3] == @mark
       true
@@ -83,6 +87,10 @@ class Game
     end
   end
 
+  # rubocop:enable Metrics/CyclomaticComplexity
+
+  # rubocop:enable Metrics/PerceivedComplexity
+
   def check_draw
     return false unless @played_moves.length == 9 && check_win == false
 
@@ -92,7 +100,7 @@ class Game
   def instructions
     print "- Each player should make one move per turn.\n\n\n"
     print "- To make a move, input the number of an empty cell that you wish to mark.\n\n\n"
-    print "- The player who succeeds in placing three of their marks in a horizontal, 
-    vertical, or diagonal row is the winner \n\n\n"
+    print '- The player who succeeds in placing three of their marks in a horizontal,'
+    print " vertical, or diagonal row is the winner \n\n\n"
   end
 end
