@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/PerceivedComplexity
+
+# rubocop:disable Metrics/CyclomaticComplexity
+
 load 'lib/grid.rb'
 load 'lib/player.rb'
 
@@ -61,10 +65,6 @@ class Game
     end
   end
 
-  # rubocop:disable Metrics/PerceivedComplexity
-
-  # rubocop:disable Metrics/CyclomaticComplexity
-
   def valid_win(hash)
     if hash[1] == @mark && hash[2] == @mark && hash[3] == @mark
       true
@@ -87,10 +87,6 @@ class Game
     end
   end
 
-  # rubocop:enable Metrics/CyclomaticComplexity
-
-  # rubocop:enable Metrics/PerceivedComplexity
-
   def check_draw
     return false unless @played_moves.length == 9 && check_win == false
 
@@ -104,3 +100,7 @@ class Game
     print " vertical, or diagonal row is the winner \n\n\n"
   end
 end
+
+# rubocop:enable Metrics/CyclomaticComplexity
+
+# rubocop:enable Metrics/PerceivedComplexity
