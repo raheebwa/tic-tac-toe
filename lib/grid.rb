@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# rubocop:disable Metrics/CyclomaticComplexity
+
 class Grid
   def initialize
     @grid = [%w[__1_ _2_ _3_], %w[__4_ _5_ _6_], %w[__7_ _8_ _9_]]
@@ -39,3 +41,5 @@ class Grid
     end
   end
 end
+
+# rubocop:enable Metrics/CyclomaticComplexity
