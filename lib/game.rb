@@ -58,13 +58,13 @@ class Game
     x_count = @@played_moves.select { |_x, y| y == 'X' }
     o_count = @@played_moves.select { |_a, b| b == 'O' }
 
-    if x_count.count > 2
-      @@finished = true if valid_win(@@played_moves) == true
-      @winner = @player_1 if valid_win(@@played_moves) == true
+    if x_count.count > 2 && valid_win(x_count) == true
+      @@finished = true
+      @winner = @player_1
 
-    elsif o_count.count > 2
-      @@finished = true if valid_win(@@played_moves) == true
-      @winner = @player_2 if valid_win(@@played_moves) == true
+    elsif o_count.count > 2 && valid_win(o_count) == true 
+      @@finished = true 
+      @winner = @player_2
 
     else
       false
