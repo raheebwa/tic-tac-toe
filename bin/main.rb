@@ -61,14 +61,3 @@ reply = gets.chomp
 reply.upcase === 'Y' ? play_again= true : play_again = false
 
 end
-
-# display prompt to move input to player 1
-
-# execute function to display grid with players mark
-
-# display prompt to move input to player 2
-
-# execute function to display grid with players mark
-
-# repeat the above 
-
