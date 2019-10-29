@@ -27,15 +27,17 @@ class Game
   end
 
   def validate_move(move)
-    return false unless (1..9).member?(move) && !@played_moves.member?(move)
-
-    true
+    if (1..9).member?(move) && !@played_moves.member?(move)
+      switch_player
+      true
+    else
+      false
+    end
   end
 
   def make_move(move)
     @mark = @current_player ? 'X' : 'O' if validate_move(move)
     @grid.translate(move, @mark)
-    switch_player
     @played_moves[move] = @mark
     check_win
     check_draw
