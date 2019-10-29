@@ -36,6 +36,8 @@ while finished == false
   print "#{game.curr_player}, it's your turn! Input your choice: "
   prompt_move = gets.chomp.to_i
   game.make_move(prompt_move)
+  puts game.display
+  
   if game.check_win == true
     puts "\n\n The Winner is #{game.winner.name}"
     finished = true

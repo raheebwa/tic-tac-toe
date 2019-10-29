@@ -39,7 +39,6 @@ class Game
     @played_moves[move] = @mark
     check_win
     check_draw
-    display
   end
 
   def curr_player
