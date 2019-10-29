@@ -8,7 +8,7 @@ load 'lib/grid.rb'
 load 'lib/player.rb'
 
 class Game
-  attr_accessor :winner
+  attr_accessor :winner, :valid_move
 
   @current_player = true
 
@@ -19,6 +19,7 @@ class Game
     @player2 = Player.new(player2)
     @finished = finished
     @played_moves = {}
+    @valid_move = true
     @grid = Grid.new
   end
 
@@ -31,6 +32,7 @@ class Game
       switch_player
       true
     else
+      @valid_move = false
       false
     end
   end
