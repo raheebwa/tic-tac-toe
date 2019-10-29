@@ -26,7 +26,7 @@ player_2 = gets.chomp
 print "\n\n\n"
 
 game = Game.new(player_1, player_2)
-game.display
+puts game.display
 
 print "#{player_1} is playing X and #{player_2} is playing O \n\n\n"
 
