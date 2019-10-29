@@ -43,7 +43,7 @@ while finished == false
   game.make_move(prompt_move)
   
   while game.valid_move == false
-    print "#{game.curr_player}, Your move is already played, please play another move: "
+    print "#{game.curr_player}, Your move is invalid, please play another move: "
     prompt_move = gets.chomp.to_i
     game.make_move(prompt_move)
   end
