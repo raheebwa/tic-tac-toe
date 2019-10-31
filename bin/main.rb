@@ -38,13 +38,15 @@ print "#{player_1} is playing X and #{player_2} is playing O \n\n\n"
 puts "\n******************\n\n\n"
 finished = false
 while finished == false
-  if game.valid_move = true 
-    print "#{game.curr_player}, it's your turn! Input your choice: "
-  else
-    print "#{game.curr_player}, Your move is already played, please play another move: "
-  end
+  print "#{game.curr_player}, it's your turn! Input your choice: "
   prompt_move = gets.chomp.to_i
   game.make_move(prompt_move)
+  
+  while game.valid_move == false
+    print "#{game.curr_player}, Your move is invalid, please play another move: "
+    prompt_move = gets.chomp.to_i
+    game.make_move(prompt_move)
+  end
   puts game.display
 
   if game.check_win == true

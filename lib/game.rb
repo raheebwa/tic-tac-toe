@@ -29,6 +29,7 @@ class Game
   def validate_move(move)
     if (1..9).member?(move) && !@played_moves.member?(move)
       switch_player
+      @valid_move = true
       true
     else
       @valid_move = false

@@ -39,7 +39,7 @@ class Grid
     when 9
       @grid[2][2] = mark
     else
-      puts 'position not valid. Please insert any number from 1 to 9'
+      false
     end
   end
 end
