@@ -11,11 +11,8 @@ class Game
   attr_accessor :winner, :valid_move
   attr_reader :player1, :player2, :finished, :played_moves, :current_player, :grid
 
-  @current_player = true
-
-  @finished = false
-
   def initialize(player1, player2, finished = false)
+    @current_player = true
     @player1 = Player.new(player1)
     @player2 = Player.new(player2)
     @finished = finished
