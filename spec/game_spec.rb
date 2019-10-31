@@ -97,3 +97,30 @@ RSpec.describe Game do
     end
   end
 end
+
+RSpec.describe Grid do
+  describe '#initialize' do
+    it 'Creates 3 x 3 grid' do
+      expect(grid.grid).to eql([%w[__1_ _2_ _3_], %w[__4_ _5_ _6_], %w[__7_ _8_ _9_]])
+    end
+  end
+  # describe '#display' do
+  #   it 'Returns unmarked model grid' do
+  #     expect(grid.display).to eql('__1_\t__2_\t__3_\t\n\n\n\n__4_\t__5_\t__6_\t\n\n\n\n__7_\t__8_\t__9_\t\n\n\n\n')
+  #   end
+  # end
+  # describe '#translate' do
+  #   it 'Change given grid item to given mark' do
+  #     expect(grid.translate(7,'X')).to eql(grid.grid)
+
+  #   end
+end
+
+RSpec.describe Player do
+  describe '#initialize' do
+    it 'Create a name instance variable for player' do
+      example = Player.new('example')
+      expect(example.name).to eql('example')
+    end
+  end
+end
