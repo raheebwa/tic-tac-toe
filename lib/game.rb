@@ -9,6 +9,7 @@ load 'lib/player.rb'
 
 class Game
   attr_accessor :winner, :valid_move
+  attr_reader :player1, :player2, :finished, :played_moves, :current_player, :grid
 
   @current_player = true
 
