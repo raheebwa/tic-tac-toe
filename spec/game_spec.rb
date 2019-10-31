@@ -58,14 +58,15 @@ RSpec.describe Game do
     end
   end
 
-  # describe '#curr_player' do
-  #   it 'returns player1 name if current_player is true' do
-
-  #   end
-  #   it 'returns player2 name if current_player is false' do
-
-  #   end
-  # end
+  describe '#curr_player' do
+    it 'returns player1 name if current_player is true' do
+      expect(game.curr_player).to eql(game.player1.name)
+    end
+    it 'returns player2 name if current_player is false' do
+      game.current_player = false
+      expect(game.curr_player).to eql(game.player2.name)
+    end
+  end
 
   describe '#switch_player' do
     it 'Switch current player status everytime that it\'s called' do
