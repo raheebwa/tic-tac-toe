@@ -104,16 +104,17 @@ RSpec.describe Grid do
       expect(grid.grid).to eql([%w[__1_ _2_ _3_], %w[__4_ _5_ _6_], %w[__7_ _8_ _9_]])
     end
   end
-  # describe '#display' do
-  #   it 'Returns unmarked model grid' do
-  #     expect(grid.display).to eql('__1_\t__2_\t__3_\t\n\n\n\n__4_\t__5_\t__6_\t\n\n\n\n__7_\t__8_\t__9_\t\n\n\n\n')
-  #   end
-  # end
-  # describe '#translate' do
-  #   it 'Change given grid item to given mark' do
-  #     expect(grid.translate(7,'X')).to eql(grid.grid)
-
-  #   end
+  describe '#display' do
+    it 'Returns unmarked model grid' do
+      expect(grid.display).to eql("__1_\t_2_\t_3_\t\n\n\n\n__4_\t_5_\t_6_\t\n\n\n\n__7_\t_8_\t_9_\t\n\n\n\n")
+    end
+  end
+  describe '#translate' do
+    it 'Change given grid item to given mark and return mark' do
+      grid.translate(7, 'X')
+      expect(grid.grid[2][0]).to eql('X')
+    end
+  end
 end
 
 RSpec.describe Player do
