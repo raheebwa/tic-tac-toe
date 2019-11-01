@@ -3,6 +3,8 @@
 # rubocop:disable Metrics/CyclomaticComplexity
 
 class Grid
+  attr_reader :grid, :mod_grid
+
   def initialize
     @grid = [%w[__1_ _2_ _3_], %w[__4_ _5_ _6_], %w[__7_ _8_ _9_]]
   end

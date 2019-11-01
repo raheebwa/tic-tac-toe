@@ -8,12 +8,10 @@ load 'lib/grid.rb'
 load 'lib/player.rb'
 
 class Game
-  attr_accessor :winner, :valid_move
-  attr_reader :player1, :player2, :finished, :played_moves, :current_player, :grid
+  attr_accessor :winner, :valid_move, :player1, :player2, :finished, :played_moves, :current_player, :grid, :mark
 
   def initialize(player1, player2, finished = false)
     @current_player = true
-    @finished = false
     @player1 = Player.new(player1)
     @player2 = Player.new(player2)
     @finished = finished
