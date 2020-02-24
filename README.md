@@ -26,6 +26,12 @@ A commandline based tic-tac-toe game
 
 4. When all 9 squares are full, the game is over. If no player has 3 marks in a row, the game ends in a tie.
 
+## Testing
+go to the main folder and run 
+```console
+$ rspec
+```
+
 #### Assumptions
 - That you have ruby installed
 - That you are running on a unix based commandline tool
